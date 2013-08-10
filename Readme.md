@@ -1,0 +1,1 @@
+Projeto 10012-ScreenCaptureTimer desenvolvido com o intuito de capturar toda a imagem do computador conforme tempo programado e salvar em uma pasta determinada pelo usuário.
