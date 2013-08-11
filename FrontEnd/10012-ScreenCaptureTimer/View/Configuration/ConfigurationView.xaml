@@ -3,25 +3,31 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:vm="clr-namespace:_10012_ScreenCaptureTimer.ViewModel.Configuration"
       mc:Ignorable="d"
       d:DesignHeight="350"
       d:DesignWidth="350"
       Title="Configurações">
+    <Page.DataContext>
+        <vm:ConfigurationViewModel/>
+    </Page.DataContext>
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="22" />
+            <RowDefinition Height="1" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
         <Label Content="Diretório de armazenamento das imagens:"
-               Margin="0,10,0,0"
+               Margin="0,0,0,0"
                HorizontalAlignment="Left"
-               VerticalAlignment="Top" />
+               VerticalAlignment="Top" Grid.Row="0"/>
 
 
         <TextBlock Text=""
@@ -31,16 +37,22 @@
                    Grid.Row="0"
                    Grid.Column="1" />
 
+
         <Button Content="Gravar"
+                Grid.Row="3"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
                 Width="100"
-                Grid.Row="2"
-                HorizontalAlignment="Center"
-                Margin="0,10,0,0"/>
+                HorizontalAlignment="Left"
+                VerticalAlignment="Bottom"
+                Margin="130,0,0,5" />
         <Button Content="Cancelar"
-                Width="100" 
-                Grid.Row="2"
-                Grid.ColumnSpan="1"
-                HorizontalAlignment="Center"
-                Margin="110,10,0,0"/>
+                Width="100"
+                Grid.Row="3"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left"
+                Margin="240,0,0,5" />
     </Grid>
 </Page>
