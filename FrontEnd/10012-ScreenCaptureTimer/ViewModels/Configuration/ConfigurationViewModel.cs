@@ -4,7 +4,7 @@ using System.Configuration;
 using System.Linq;
 using System.Text;
 
-namespace _10012_ScreenCaptureTimer.ViewModel.Configuration
+namespace ScreenCaptureTimer.ViewModel.Configuration
 {
     class ConfigurationViewModel
     {

@@ -12,7 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace _10012_ScreenCaptureTimer
+namespace ScreenCaptureTimer
 {
     /// <summary>
     /// Interação lógica para MainWindow.xam

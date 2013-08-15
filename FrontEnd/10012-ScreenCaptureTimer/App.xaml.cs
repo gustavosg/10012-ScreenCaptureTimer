@@ -5,7 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Windows;
 
-namespace _10012_ScreenCaptureTimer
+namespace ScreenCaptureTimer
 {
     /// <summary>
     /// Interação lógica para App.xaml

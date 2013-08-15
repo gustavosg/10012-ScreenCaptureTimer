@@ -12,7 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace _10012_ScreenCaptureTimer.View.Configuration
+namespace ScreenCaptureTimer.View.Configuration
 {
     /// <summary>
     /// Interaction logic for ConfigurationView.xaml

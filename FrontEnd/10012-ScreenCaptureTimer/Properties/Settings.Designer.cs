@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace _10012_ScreenCaptureTimer.Properties
+namespace ScreenCaptureTimer.Properties
 {
 
 
