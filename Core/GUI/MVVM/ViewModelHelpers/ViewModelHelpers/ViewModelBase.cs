@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace ViewModelHelpers
+namespace Library.Core.Gui.ViewModelHelpers
 {
-    public class ViewModelBase : RelayCommand
+    public class ViewModelBase
     {
     }
 }

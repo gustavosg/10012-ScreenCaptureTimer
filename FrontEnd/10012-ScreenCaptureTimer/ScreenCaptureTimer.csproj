@@ -104,7 +104,16 @@
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\GUI\MVVM\ViewModelHelpers\ViewModelHelpers\ViewModelHelpers.csproj">
+      <Project>{6B2B5F9D-1305-48FF-ACBA-56BCF9EB21D6}</Project>
+      <Name>ViewModelHelpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\GUI\WPF\ScreenShotHelper\ScreenShotHelper.csproj">
+      <Project>{DA54AF72-0F7A-43B6-AD8E-D18C6DA7C548}</Project>
+      <Name>ScreenShotHelper</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

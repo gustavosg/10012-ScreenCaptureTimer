@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Drawing.Imaging;
 
-namespace Util
+namespace Library.Core.Gui.WPF.ScreenShotHelper
 {
     public class ScreenShotHelper
     {
@@ -18,8 +18,10 @@ namespace Util
             Bitmap bmp = CaptureScreen();
             String filename = String.Empty;
             DateTime dateTime = DateTime.UtcNow;
-            filename = "D:\\TEMP\\" + dateTime.ToString();
-            bmp.Save(filename, ImageFormat.Jpeg);
+            filename = @"D:\TEMP\" + dateTime.ToLocalTime() + ".jpg";
+            filename = filename.Replace("/", "");
+            filename = filename.Replace(":", "");
+            bmp.Save(filename);
         }
 
         /// <summary>

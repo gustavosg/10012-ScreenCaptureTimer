@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.ComponentModel;
 
-namespace ViewModelHelpers
+namespace Library.Core.Gui.ViewModelHelpers
 {
-    public class PropertyChanged
+    public class NotifyPropertyChanged : INotifyPropertyChanged
     {
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected virtual void OnPropertyChanged(String propertyName)
+        protected void OnPropertyChanged(String propertyName)
         {
             PropertyChangedEventHandler handler = this.PropertyChanged;
 
