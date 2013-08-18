@@ -5,7 +5,7 @@ using System.Text;
 using System.Diagnostics;
 using System.Windows.Input;
 
-namespace Library.Core.Gui.ViewModelHelpers
+namespace Library.Core.GUI.ViewModelHelpers
 {
     public class RelayCommand : NotifyPropertyChanged, ICommand
     {

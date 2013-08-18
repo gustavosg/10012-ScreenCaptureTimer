@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Library.Core.Gui.WPF.ScreenShotHelper
+namespace Library.Core.GUI.WPF.ScreenShotHelper
 {
     public class Class1
     {

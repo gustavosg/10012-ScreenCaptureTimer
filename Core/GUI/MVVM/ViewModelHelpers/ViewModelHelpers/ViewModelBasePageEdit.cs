@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Library.Core.Gui.ViewModelHelpers
+namespace Library.Core.GUI.ViewModelHelpers
 {
     public class ViewModelBasePageEdit : ViewModelBase
     {

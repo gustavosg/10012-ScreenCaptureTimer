@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Input;
 
-using Library.Core.Gui.WPF.ScreenShotHelper;
-using Library.Core.Gui.ViewModelHelpers;
+using Library.Core.GUI.WPF.ScreenShotHelper;
+using Library.Core.GUI.ViewModelHelpers;
 
 namespace ScreenCaptureTimer.ViewModels
 {
