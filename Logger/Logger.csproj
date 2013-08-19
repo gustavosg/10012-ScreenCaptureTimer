@@ -46,6 +46,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Core\Util\Asset.csproj">
+      <Project>{F18A1FF0-206A-4EF9-892B-7567EC7AFA5F}</Project>
+      <Name>Asset</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Singleton\Singleton.csproj">
       <Project>{A8AC5CBC-A926-421C-A901-05ABD12B6D46}</Project>
       <Name>Singleton</Name>

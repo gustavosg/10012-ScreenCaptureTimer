@@ -10,63 +10,84 @@
 // --------------------------------------------------------------------------------
 
 using System;
-using Library.Core.Singleton;
 using System.Configuration;
 using System.IO;
+using Library.Core.Util.Singleton;
 
-namespace Library.Core.Logger
+namespace Library.Core.Util.Logger
 {
-    public class Logger : Singleton<Logger>
+    public static class Logger
     {
 
-        String filename;
-
-        public Logger()
-        {
-
-        }
+        static String filename;
 
         /// <summary>
         /// Returns path of logger
         /// </summary>
         /// <returns>String containing path of log</returns>
-        private String LogGetPath()
+        private static String LogGetPath()
         {
-            return ConfigurationManager.AppSettings["LogPath"];
+            filename = ConfigurationManager.AppSettings["LogPath"] + String.Format("{0:yyyyMMdd}", DateTime.Today.Date) + ".log";
+            return filename;
+
         }
 
         /// <summary>
         /// Read entire log from file
         /// </summary>
         /// <returns>Log in String format</returns>
-        private String LogReader()
+        private static String LogReader()
         {
-            String filepath = LogGetPath();
+            FileInfo file = new FileInfo(LogGetPath());
 
-            StreamReader sr = new StreamReader(filepath);
+            // In case file doesn't exists, creates file AND directory
+            if (!File.Exists(file.FullName))
+            {
+                file.Directory.Create();
+                File.Create(file.FullName);
+            }
 
-            return sr.ReadToEnd();
+            // Opening file to read
+            StreamReader sr = new StreamReader(file.FullName);
+
+            // Reading content of file
+            String content = sr.ReadToEnd().ToString();
+
+            // Closing file to avoid exception
+            sr.Close();
+
+            return content;
         }
 
-        private void LogWriter(String level, String logData, String user = "")
+        /// <summary>
+        /// Write content to log
+        /// </summary>
+        /// <param name="level">Log Level (INFO, DEBUG, ERROR, WARN, FATAL)</param>
+        /// <param name="logData">Content to write on Log</param>
+        public static void LogWriter(String level, String logData)
         {
-            String content = LogReader();
+            try
+            {
+                // TODO Gustavo: Colocar algumas explicações de código
+                String content = LogReader();
 
-            DateTime date = DateTime.UtcNow;
+                DateTime date = DateTime.Now;
 
-            String log = String.Empty;
+                String log = String.Empty;
 
-            if (String.IsNullOrEmpty(user))
                 log = level + " | " + date + " | " + logData + ".";
-            else
-                log = level + " | " + date + " | " + logData + " | Usuário: " + user + ".";
 
-            StreamWriter sw = new StreamWriter(filename);
+                StreamWriter sw = new StreamWriter(filename);
 
-            sw.WriteLine(content + log);
+                sw.WriteLine(content + log);
 
-            sw.Flush();
-            sw.Close();
+                sw.Flush();
+                sw.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
 
         }
 

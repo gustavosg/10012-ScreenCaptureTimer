@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Reflection;
 
-namespace Library.Core.Singleton
+namespace Library.Core.Util.Singleton
 {
-    public class Singleton<T> where T : class
+    public sealed class Singleton<GenericClass> where GenericClass : class, new()
     {
-        private static T instance;
+        private static GenericClass instance;
 
         private static Object singletonLock = new Object();
 
@@ -16,19 +16,19 @@ namespace Library.Core.Singleton
         /// Return Singleton instance of Class
         /// </summary>
         /// <returns>Instance of class</returns>
-        public static T GetSingleton()
+        public static GenericClass GetSingleton()
         {
             if (instance == null)
                 lock (singletonLock)
                 {
                     if (instance == null)
                     {
-                        Type t = typeof(T);
+                        Type t = typeof(GenericClass);
 
                         // Confere se não tem construtores publicos...
                         ConstructorInfo[] ctors = t.GetConstructors();
                         if (ctors.Length > 0)
-                            instance = (T)Activator.CreateInstance(t, true);
+                            instance = (GenericClass)Activator.CreateInstance(t, true);
 
                     }
                 }

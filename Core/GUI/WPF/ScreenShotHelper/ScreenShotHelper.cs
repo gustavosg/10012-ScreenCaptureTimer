@@ -5,6 +5,8 @@ using System.Text;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Drawing.Imaging;
+using Library.Core.Util.Logger;
+using System.IO;
 
 namespace Library.Core.GUI.WPF.ScreenShotHelper
 {
@@ -18,17 +20,16 @@ namespace Library.Core.GUI.WPF.ScreenShotHelper
             try
             {
                 Bitmap bmp = CaptureScreen();
-                String filename = String.Empty;
-                DateTime dateTime = DateTime.UtcNow;
-                filename = @"D:\TEMP\" + dateTime.ToLocalTime() + ".jpg";
-                filename = filename.Replace("/", "");
-                filename = filename.Replace(":", "");
-                bmp.Save(filename);
+                String dateTime = String.Format("{0:yyyyMMddHHmmss}", DateTime.Now);
+                FileInfo filename = new FileInfo(@"D:\TEMP\" + dateTime + ".jpg");
+                //filename = filename.Replace("/", "");
+                //filename = filename.Replace(":", "");
+                bmp.Save(filename.FullName, ImageFormat.Jpeg);
             }
             catch (Exception ex)
             {
-
-                throw;
+                Log.Error(ex.ToString());
+                throw ex;
             }
         }
 
@@ -50,22 +51,23 @@ namespace Library.Core.GUI.WPF.ScreenShotHelper
             }
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         private Bitmap CaptureScreen()
         {
-            using (Bitmap bmp = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height))
-            {
-                using (Graphics g = Graphics.FromImage(bmp))
-                {
-                    g.CopyFromScreen(
-                        Screen.PrimaryScreen.Bounds.X,
-                        Screen.PrimaryScreen.Bounds.Y,
-                        0, 0,
-                        bmp.Size,
-                        CopyPixelOperation.SourceCopy);
-                }
-                return bmp;
-            };
+            Bitmap bmp = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
+            Graphics g = Graphics.FromImage(bmp);
+
+            g.CopyFromScreen(
+                Screen.PrimaryScreen.Bounds.X,
+                Screen.PrimaryScreen.Bounds.Y,
+                0, 0,
+                bmp.Size,
+                CopyPixelOperation.SourceCopy);
+
+            return bmp;
         }
     }
 }
