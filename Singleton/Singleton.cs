@@ -6,7 +6,7 @@ using System.Reflection;
 
 namespace Library.Core.Util.Singleton
 {
-    public sealed class Singleton<GenericClass> where GenericClass : class, new()
+    public class Singleton<GenericClass> where GenericClass : class, new()
     {
         private static GenericClass instance;
 
@@ -29,12 +29,9 @@ namespace Library.Core.Util.Singleton
                         ConstructorInfo[] ctors = t.GetConstructors();
                         if (ctors.Length > 0)
                             instance = (GenericClass)Activator.CreateInstance(t, true);
-
                     }
                 }
-
             return instance;
         }
-
     }
 }

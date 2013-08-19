@@ -22,14 +22,22 @@ namespace Library.Core.Util.Logger
         static String filename;
 
         /// <summary>
-        /// Returns path of logger
+        /// Returns path of current log
         /// </summary>
         /// <returns>String containing path of log</returns>
-        private static String LogGetPath()
+        private static String LogGetCurrentFile()
         {
-            filename = ConfigurationManager.AppSettings["LogPath"] + String.Format("{0:yyyyMMdd}", DateTime.Today.Date) + ".log";
+            filename = ConfigurationManager.AppSettings["LogPath"] + AppDomain.CurrentDomain.FriendlyName + ".log";
             return filename;
+        }
 
+        /// <summary>
+        /// Returns path of old log file
+        /// </summary>
+        /// <returns>String containing path of log</returns>
+        private static String LogGetOldFile()
+        {
+            return ConfigurationManager.AppSettings["LogPath"] + AppDomain.CurrentDomain.FriendlyName + ".1.log";
         }
 
         /// <summary>
@@ -38,7 +46,7 @@ namespace Library.Core.Util.Logger
         /// <returns>Log in String format</returns>
         private static String LogReader()
         {
-            FileInfo file = new FileInfo(LogGetPath());
+            FileInfo file = new FileInfo(LogGetCurrentFile());
 
             // In case file doesn't exists, creates file AND directory
             if (!File.Exists(file.FullName))
@@ -46,6 +54,9 @@ namespace Library.Core.Util.Logger
                 file.Directory.Create();
                 File.Create(file.FullName);
             }
+
+            if (file.Length > 1024000000)
+                File.Move(LogGetCurrentFile(), LogGetOldFile());
 
             // Opening file to read
             StreamReader sr = new StreamReader(file.FullName);

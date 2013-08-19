@@ -1,17 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Drawing;
-using System.Windows.Forms;
 using System.Drawing.Imaging;
-using Library.Core.Util.Logger;
 using System.IO;
+using System.Windows.Forms;
+using Library.Core.Util.Logger;
+using Library.Core.Util.Singleton;
 
 namespace Library.Core.GUI.WPF.ScreenShotHelper
 {
-    public class ScreenShotHelper
+    public class ScreenShotHelper : Singleton<ScreenShotHelper>
     {
+
+        public ScreenShotHelper()
+        {
+
+        }
+
         /// <summary>
         /// Save's Image 
         /// </summary>
@@ -19,17 +23,22 @@ namespace Library.Core.GUI.WPF.ScreenShotHelper
         {
             try
             {
+                Log.Info("Iniciando captura da tela...");
+
                 Bitmap bmp = CaptureScreen();
                 String dateTime = String.Format("{0:yyyyMMddHHmmss}", DateTime.Now);
                 FileInfo filename = new FileInfo(@"D:\TEMP\" + dateTime + ".jpg");
-                //filename = filename.Replace("/", "");
-                //filename = filename.Replace(":", "");
                 bmp.Save(filename.FullName, ImageFormat.Jpeg);
+
             }
             catch (Exception ex)
             {
-                Log.Error(ex.ToString());
+                Log.Error(ex.Message);
                 throw ex;
+            }
+            finally
+            {
+                Log.Info("Captura da tela realizado com sucesso!");
             }
         }
 

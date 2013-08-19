@@ -51,6 +51,10 @@
       <Project>{30C9C44B-8249-4397-A3A6-F78A78EAE927}</Project>
       <Name>Logger</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\..\Singleton\Singleton.csproj">
+      <Project>{A8AC5CBC-A926-421C-A901-05ABD12B6D46}</Project>
+      <Name>Singleton</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="clr-namespace:ScreenCaptureTimer.ViewModels"
         Title="Screen Capture Timer"
-        Height="350"
+        Height="450"
         Width="525"
         xmlns:ribbon="http://schemas.microsoft.com/winfx/2006/xaml/presentation/ribbon">
     <Window.DataContext>
@@ -24,6 +24,8 @@
             <ribbon:RibbonTab Header="Arquivo">
                 <ribbon:RibbonButton Label="Tirar Foto" 
                                      Command="{Binding TirarFoto}"/>
+                <ribbon:RibbonButton Label="Exibir Log"
+                                     Command="{Binding ExibirLog}" />
                 <ribbon:RibbonButton Label="Fechar Aplicação"
                                      Command="Close" />
             </ribbon:RibbonTab>

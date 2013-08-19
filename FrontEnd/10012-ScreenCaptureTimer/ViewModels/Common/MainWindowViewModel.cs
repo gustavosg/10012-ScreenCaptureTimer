@@ -1,20 +1,43 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Input;
+﻿// --------------------------------------------------------------------------------
+// Detalhes do Sistema: 10012 - ScreenCaptureTimer
+// Descrição: 
+//
+// --------------------------------------------------------------------------------
+//
+//
+//
+//
+// --------------------------------------------------------------------------------
+
+using System;
 
 using Library.Core.GUI.WPF.ScreenShotHelper;
 using Library.Core.GUI.ViewModelHelpers;
+using Library.Core.Util.Logger;
+using Library.Core.Util.Singleton;
+using System.Configuration;
 
 namespace ScreenCaptureTimer.ViewModels
 {
     public class MainWindowViewModel
     {
 
+        #region Fields
 
+        private Int16 timer = 0;
 
+        #endregion
 
+        #region Constructor
+
+        public MainWindowViewModel()
+        {
+
+            ConfigureScreenShot();
+
+        }
+
+        #endregion
 
         #region Commands
 
@@ -31,20 +54,41 @@ namespace ScreenCaptureTimer.ViewModels
 
         #endregion
 
-        #region Methods
+        #region Métodos
 
-        private void DoTirarFoto()
+        // --------------------------------------------------------------------------------
+        // Geral
+
+
+        /// <summary>
+        /// Tira foto da tela
+        /// </summary>
+        public void DoTirarFoto()
         {
-            ScreenShotHelper sc = new ScreenShotHelper();
-
-            sc.SaveScreenImage();
-            
+            ScreenShotHelper.GetSingleton().SaveScreenImage();
         }
 
         private Boolean CanTirarFoto
         {
             get { return true; }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void ConfigureScreenShot()
+        {
+            timer = Convert.ToInt16(ConfigurationManager.AppSettings["TimerScreenShot"].ToString());
+
+            if (timer == 0)
+            {
+                Log.Error("Valor configurado não pode ser 0");
+                throw new Exception("Valor configurado não pode ser 0");
+            }
+                
+
+        }
+
 
         #endregion
 
