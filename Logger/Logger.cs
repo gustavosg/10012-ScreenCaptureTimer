@@ -48,6 +48,9 @@ namespace Library.Core.Util.Logger
         {
             FileInfo file = new FileInfo(LogGetCurrentFile());
 
+            while (IsFileLocked(file))
+                System.Threading.Thread.Sleep(2000);
+
             // In case file doesn't exists, creates file AND directory
             if (!File.Exists(file.FullName))
             {
@@ -86,9 +89,10 @@ namespace Library.Core.Util.Logger
 
                 String log = String.Empty;
 
-                log = level + " | " + date + " | " + logData + ".";
+                log = level + " | " + date + " | " + logData;
 
                 StreamWriter sw = new StreamWriter(filename);
+                
 
                 sw.WriteLine(content + log);
 
@@ -102,5 +106,35 @@ namespace Library.Core.Util.Logger
 
         }
 
+        /// <summary>
+        /// Check if file is in use
+        /// </summary>
+        /// <param name="file"></param>
+        /// <returns></returns>
+        static Boolean IsFileLocked(FileInfo file)
+        {
+            FileStream stream = null;
+
+            try
+            {
+                stream = file.Open(FileMode.Open, FileAccess.ReadWrite, FileShare.None);
+            }
+            catch (IOException)
+            {
+                //the file is unavailable because it is:
+                //still being written to
+                //or being processed by another thread
+                //or does not exist (has already been processed)
+                return true;
+            }
+            finally
+            {
+                if (stream != null)
+                    stream.Close();
+            }
+
+            //file is not locked
+            return false;
+        }
     }
 }

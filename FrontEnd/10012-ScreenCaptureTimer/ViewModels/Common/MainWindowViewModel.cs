@@ -16,6 +16,7 @@ using Library.Core.GUI.ViewModelHelpers;
 using Library.Core.Util.Logger;
 using Library.Core.Util.Singleton;
 using System.Configuration;
+using System.Windows;
 
 namespace ScreenCaptureTimer.ViewModels
 {
@@ -34,6 +35,8 @@ namespace ScreenCaptureTimer.ViewModels
         {
 
             ConfigureScreenShot();
+
+            ActivateScreenShot();
 
         }
 
@@ -59,13 +62,17 @@ namespace ScreenCaptureTimer.ViewModels
         // --------------------------------------------------------------------------------
         // Geral
 
-
         /// <summary>
         /// Tira foto da tela
         /// </summary>
         public void DoTirarFoto()
         {
-            ScreenShotHelper.GetSingleton().SaveScreenImage();
+            while (true)
+            {
+                System.Threading.Thread.Sleep(timer * 1000);
+
+                ScreenShotHelper.GetSingleton().SaveScreenImage();
+            }
         }
 
         private Boolean CanTirarFoto
@@ -74,7 +81,7 @@ namespace ScreenCaptureTimer.ViewModels
         }
 
         /// <summary>
-        /// 
+        /// Verifica a configuração do timer para capturar a tela
         /// </summary>
         private void ConfigureScreenShot()
         {
@@ -82,11 +89,30 @@ namespace ScreenCaptureTimer.ViewModels
 
             if (timer == 0)
             {
-                Log.Error("Valor configurado não pode ser 0");
-                throw new Exception("Valor configurado não pode ser 0");
+                try
+                {
+                    MessageBox.Show("Variável TimerScreenShot não pode ser igual a 0 na configuração do sistema!");
+                    throw new Exception("Variável TimerScreenShot não pode ser igual a 0 na configuração do sistema!");
+                }
+                catch (Exception exception)
+                {
+                    Log.Error(exception.ToString());
+                }
+                finally
+                {
+                    Application.Current.Shutdown();
+                }
             }
-                
+        }
 
+        private void ActivateScreenShot()
+        {
+            Log.Info("Iniciando capturas da tela do computador atual...");
+
+            System.Threading.Thread thread = new System.Threading.Thread(DoTirarFoto);
+
+            thread.Start();
+                
         }
 
 
