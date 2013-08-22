@@ -14,7 +14,6 @@ using System;
 using Library.Core.GUI.WPF.ScreenShotHelper;
 using Library.Core.GUI.ViewModelHelpers;
 using Library.Core.Util.Logger;
-using Library.Core.Util.Singleton;
 using System.Configuration;
 using System.Windows;
 
@@ -33,25 +32,23 @@ namespace ScreenCaptureTimer.ViewModels
 
         public MainWindowViewModel()
         {
-
             ConfigureScreenShot();
 
             ActivateScreenShot();
-
         }
 
         #endregion
 
         #region Commands
 
-        private RelayCommand tirarFoto;
-        public RelayCommand TirarFoto
+        private RelayCommand capturaTela;
+        public RelayCommand CapturaTela
         {
             get
             {
-                if (tirarFoto == null)
-                    tirarFoto = new RelayCommand(param => DoTirarFoto(), param => CanTirarFoto);
-                return tirarFoto;
+                if (capturaTela == null)
+                    capturaTela = new RelayCommand(param => DoCapturarTela(), param => CanCapturarTela);
+                return capturaTela;
             }
         }
 
@@ -63,19 +60,14 @@ namespace ScreenCaptureTimer.ViewModels
         // Geral
 
         /// <summary>
-        /// Tira foto da tela
+        /// Captura imagem da tela no momento da chamada
         /// </summary>
-        public void DoTirarFoto()
+        public void DoCapturarTela()
         {
-            while (true)
-            {
-                System.Threading.Thread.Sleep(timer * 1000);
-
-                ScreenShotHelper.GetSingleton().SaveScreenImage();
-            }
+            ScreenShotHelper.GetSingleton().SaveScreenImage();
         }
 
-        private Boolean CanTirarFoto
+        private Boolean CanCapturarTela
         {
             get { return true; }
         }
@@ -87,34 +79,46 @@ namespace ScreenCaptureTimer.ViewModels
         {
             timer = Convert.ToInt16(ConfigurationManager.AppSettings["TimerScreenShot"].ToString());
 
-            if (timer == 0)
+            try
             {
-                try
+                if (timer == 0)
                 {
                     MessageBox.Show("Variável TimerScreenShot não pode ser igual a 0 na configuração do sistema!");
                     throw new Exception("Variável TimerScreenShot não pode ser igual a 0 na configuração do sistema!");
                 }
-                catch (Exception exception)
-                {
-                    Log.Error(exception.ToString());
-                }
-                finally
-                {
-                    Application.Current.Shutdown();
-                }
+            }
+            catch (Exception exception)
+            {
+                Log.Error(exception.ToString());
+            }
+            finally
+            {
+                Application.Current.Shutdown();
             }
         }
 
+        /// <summary>
+        /// Processo que realizará a captura da tela
+        /// </summary>
         private void ActivateScreenShot()
         {
-            Log.Info("Iniciando capturas da tela do computador atual...");
-
-            System.Threading.Thread thread = new System.Threading.Thread(DoTirarFoto);
+            System.Threading.Thread thread = new System.Threading.Thread(CapturarTela);
 
             thread.Start();
-                
         }
 
+        /// <summary>
+        /// Captura imagem da tela
+        /// </summary>
+        private void CapturarTela()
+        {
+            while (true)
+            {
+                System.Threading.Thread.Sleep(timer * 1000);
+
+                DoCapturarTela();
+            }
+        }
 
         #endregion
 
