@@ -16,6 +16,7 @@ using Library.Core.GUI.ViewModelHelpers;
 using Library.Core.Util.Logger;
 using System.Configuration;
 using System.Windows;
+using Library.Core.Util;
 
 namespace ScreenCaptureTimer.ViewModels
 {
@@ -32,9 +33,17 @@ namespace ScreenCaptureTimer.ViewModels
 
         public MainWindowViewModel()
         {
-            ConfigureScreenShot();
+#if !DEBUG
 
-            ActivateScreenShot();
+            if (!System.Diagnostics.Debugger.IsAttached)
+            {
+                VerificarInstancias();
+
+                ConfigureScreenShot();
+
+                ActivateScreenShot();
+            }
+#endif
         }
 
         #endregion
@@ -57,7 +66,7 @@ namespace ScreenCaptureTimer.ViewModels
         #region Métodos
 
         // --------------------------------------------------------------------------------
-        // Geral
+        // Commands
 
         /// <summary>
         /// Captura imagem da tela no momento da chamada
@@ -77,7 +86,8 @@ namespace ScreenCaptureTimer.ViewModels
         /// </summary>
         private void ConfigureScreenShot()
         {
-            timer = Convert.ToInt16(ConfigurationManager.AppSettings["TimerScreenShot"].ToString());
+            timer = Convert.ToInt16(System.Configuration.ConfigurationManager.AppSettings["TimerScreenShot"]);
+            //ConfigurationManager.AppSettings["TimerScreenShot"].ToString());
 
             try
             {
@@ -117,6 +127,18 @@ namespace ScreenCaptureTimer.ViewModels
                 System.Threading.Thread.Sleep(timer * 1000);
 
                 DoCapturarTela();
+            }
+        }
+
+        // --------------------------------------------------------------------------------
+        // Commands
+
+        private void VerificarInstancias()
+        {
+            if (SystemUtil.GetSingleton().IsAnotherProcessRunning())
+            {
+                MessageBox.Show("Já existe outra aplicação executando... Aplicação sendo finalizada.");
+                Application.Current.Shutdown();
             }
         }
 

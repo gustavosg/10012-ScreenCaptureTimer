@@ -114,6 +114,10 @@
       <Project>{DA54AF72-0F7A-43B6-AD8E-D18C6DA7C548}</Project>
       <Name>ScreenShotHelper</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Core\Util\Util\Core.Util\Util.csproj">
+      <Project>{C80C1BB5-0F95-4B5D-969D-D654990028AA}</Project>
+      <Name>Util %281 - Library\Core\Util\Util%29</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Logger\Logger.csproj">
       <Project>{30C9C44B-8249-4397-A3A6-F78A78EAE927}</Project>
       <Name>Logger</Name>
