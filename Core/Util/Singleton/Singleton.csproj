@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{30C9C44B-8249-4397-A3A6-F78A78EAE927}</ProjectGuid>
+    <ProjectGuid>{A8AC5CBC-A926-421C-A901-05ABD12B6D46}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Library.Core.Logger</RootNamespace>
-    <AssemblyName>Library.Core.Logger</AssemblyName>
+    <RootNamespace>Library.Core.Singleton</RootNamespace>
+    <AssemblyName>Library.Core.Singleton</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\..\Build\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -32,7 +32,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,19 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Log.cs" />
-    <Compile Include="Logger.cs" />
+    <Compile Include="Singleton.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Core\Util\Asset.csproj">
-      <Project>{F18A1FF0-206A-4EF9-892B-7567EC7AFA5F}</Project>
-      <Name>Asset</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Singleton\Singleton.csproj">
-      <Project>{A8AC5CBC-A926-421C-A901-05ABD12B6D46}</Project>
-      <Name>Singleton</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

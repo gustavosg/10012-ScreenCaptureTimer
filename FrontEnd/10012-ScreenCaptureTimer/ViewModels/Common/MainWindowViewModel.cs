@@ -35,7 +35,7 @@ namespace ScreenCaptureTimer.ViewModels
         {
 #if !DEBUG
 
-            if (!System.Diagnostics.Debugger.IsAttached)
+            if (!System.Diagnostics.Buildger.IsAttached)
             {
                 VerificarInstancias();
 

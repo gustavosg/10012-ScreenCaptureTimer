@@ -63,9 +63,9 @@ namespace Library.Core.Util.Asset {
         /// <summary>
         ///   Looks up a localized string similar to DEBUG.
         /// </summary>
-        public static string LogDebug {
+        public static string LogBuild {
             get {
-                return ResourceManager.GetString("LogDebug", resourceCulture);
+                return ResourceManager.GetString("LogBuild", resourceCulture);
             }
         }
         

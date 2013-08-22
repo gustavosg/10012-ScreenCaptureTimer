@@ -23,7 +23,7 @@ namespace Library.Core.Util.Logger
         /// <param name="user"></param>
         public static void Debug(String message)
         {
-            Logger.LogWriter(BusinessStrings.LogDebug, message);
+            Logger.LogWriter(BusinessStrings.LogBuild, message);
         }
 
         /// <summary>

@@ -36,7 +36,7 @@ namespace Library.Core.GUI.ViewModelHelpers
         // Constructors 
         
         #region ICommand Members
-       
+
         [DebuggerStepThrough]
         public bool CanExecute(object parameter)
         {

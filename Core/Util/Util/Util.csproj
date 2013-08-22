@@ -8,8 +8,8 @@
     <ProjectGuid>{C80C1BB5-0F95-4B5D-969D-D654990028AA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Core.Util</RootNamespace>
-    <AssemblyName>Core.Util</AssemblyName>
+    <RootNamespace>Library.Core.Util</RootNamespace>
+    <AssemblyName>Library.Core.Util</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\Build\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -45,11 +45,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Logger\Logger.csproj">
+    <ProjectReference Include="..\Logger\Logger.csproj">
       <Project>{30C9C44B-8249-4397-A3A6-F78A78EAE927}</Project>
       <Name>Logger</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\Singleton\Singleton.csproj">
+    <ProjectReference Include="..\Singleton\Singleton.csproj">
       <Project>{A8AC5CBC-A926-421C-A901-05ABD12B6D46}</Project>
       <Name>Singleton</Name>
     </ProjectReference>
