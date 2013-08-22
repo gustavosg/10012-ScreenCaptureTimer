@@ -13,10 +13,11 @@ using System;
 
 using Library.Core.GUI.WPF.ScreenShotHelper;
 using Library.Core.GUI.ViewModelHelpers;
-using Library.Core.Util.Logger;
+
 using System.Configuration;
 using System.Windows;
 using Library.Core.Util;
+using Library.Core.Util.Logger;
 
 namespace ScreenCaptureTimer.ViewModels
 {
@@ -135,7 +136,7 @@ namespace ScreenCaptureTimer.ViewModels
 
         private void VerificarInstancias()
         {
-            if (SystemUtil.GetSingleton().IsAnotherProcessRunning())
+            if (SystemUtil.IsAnotherProcessRunning())
             {
                 MessageBox.Show("Já existe outra aplicação executando... Aplicação sendo finalizada.");
                 Application.Current.Shutdown();

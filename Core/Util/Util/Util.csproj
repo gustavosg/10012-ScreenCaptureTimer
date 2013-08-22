@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\Build\</OutputPath>
+    <OutputPath>..\..\Build\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -31,6 +31,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Library.Core.Util.Logger, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Build\Library.Core.Util.Logger.dll</HintPath>
+    </Reference>
+    <Reference Include="Library.Core.Util.Singleton">
+      <HintPath>..\..\Build\Library.Core.Util.Singleton.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,16 +50,6 @@
   <ItemGroup>
     <Compile Include="SystemUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Logger\Logger.csproj">
-      <Project>{30C9C44B-8249-4397-A3A6-F78A78EAE927}</Project>
-      <Name>Logger</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Singleton\Singleton.csproj">
-      <Project>{A8AC5CBC-A926-421C-A901-05ABD12B6D46}</Project>
-      <Name>Singleton</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

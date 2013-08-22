@@ -1,19 +1,19 @@
 ﻿using System;
-using System.Windows;
 using System.Diagnostics;
 using Library.Core.Util.Logger;
-using Library.Core.Util.Singleton;
 
 namespace Library.Core.Util
 {
-    public class SystemUtil : Singleton<SystemUtil>
+    public static class SystemUtil 
     {
+
+        
 
         /// <summary>
         /// Check if there's another application currently running
         /// </summary>
         /// <returns>If there's another application alive</returns>
-        public Boolean IsAnotherProcessRunning()
+        public static Boolean IsAnotherProcessRunning()
         {
             try
             {

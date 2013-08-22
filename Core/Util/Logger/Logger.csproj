@@ -8,8 +8,8 @@
     <ProjectGuid>{30C9C44B-8249-4397-A3A6-F78A78EAE927}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Library.Core.Logger</RootNamespace>
-    <AssemblyName>Library.Core.Logger</AssemblyName>
+    <RootNamespace>Library.Core.Util.Logger</RootNamespace>
+    <AssemblyName>Library.Core.Util.Logger</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,6 +31,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Library.Core.Util">
+      <HintPath>..\..\Build\Library.Core.Util.dll</HintPath>
+    </Reference>
+    <Reference Include="Library.Core.Util.Asset">
+      <HintPath>..\..\Build\Library.Core.Util.Asset.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -44,16 +50,6 @@
     <Compile Include="Log.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Asset.csproj">
-      <Project>{F18A1FF0-206A-4EF9-892B-7567EC7AFA5F}</Project>
-      <Name>Asset</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Singleton\Singleton.csproj">
-      <Project>{A8AC5CBC-A926-421C-A901-05ABD12B6D46}</Project>
-      <Name>Singleton</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

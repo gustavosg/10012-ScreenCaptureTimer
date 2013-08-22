@@ -12,7 +12,6 @@
 using System;
 using System.Configuration;
 using System.IO;
-using Library.Core.Util.Singleton;
 
 namespace Library.Core.Util.Logger
 {
