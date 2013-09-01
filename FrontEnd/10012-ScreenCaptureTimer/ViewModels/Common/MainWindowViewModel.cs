@@ -18,12 +18,12 @@ using System.Configuration;
 using System.Windows;
 using Library.Core.Util;
 using Library.Core.Util.Logger;
+using System.Diagnostics;
 
 namespace ScreenCaptureTimer.ViewModels
 {
     public class MainWindowViewModel
     {
-
         #region Fields
 
         private Int16 timer = 0;
@@ -34,17 +34,11 @@ namespace ScreenCaptureTimer.ViewModels
 
         public MainWindowViewModel()
         {
-#if !DEBUG
+            VerificarInstancias();
 
-            if (!System.Diagnostics.Buildger.IsAttached)
-            {
-                VerificarInstancias();
+            ConfigureScreenShot();
 
-                ConfigureScreenShot();
-
-                ActivateScreenShot();
-            }
-#endif
+            ActivateScreenShot();
         }
 
         #endregion
@@ -59,6 +53,17 @@ namespace ScreenCaptureTimer.ViewModels
                 if (capturaTela == null)
                     capturaTela = new RelayCommand(param => DoCapturarTela(), param => CanCapturarTela);
                 return capturaTela;
+            }
+        }
+
+        private RelayCommand abrirConfiguracoes;
+        public RelayCommand AbrirConfiguracoes
+        {
+            get
+            {
+                if (abrirConfiguracoes == null)
+                    abrirConfiguracoes = new RelayCommand(param => DoAbrirConfiguracoes());
+                return abrirConfiguracoes;
             }
         }
 
@@ -80,6 +85,11 @@ namespace ScreenCaptureTimer.ViewModels
         private Boolean CanCapturarTela
         {
             get { return true; }
+        }
+
+        public void DoAbrirConfiguracoes()
+        {
+
         }
 
         /// <summary>
@@ -113,9 +123,16 @@ namespace ScreenCaptureTimer.ViewModels
         /// </summary>
         private void ActivateScreenShot()
         {
-            System.Threading.Thread thread = new System.Threading.Thread(CapturarTela);
+            try
+            {
+                System.Threading.Thread thread = new System.Threading.Thread(CapturarTela);
 
-            thread.Start();
+                thread.Start();
+            }
+            catch (Exception ex)
+            {
+                Log.Info(ex.Message);
+            }
         }
 
         /// <summary>

@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using Library.Core.Util.Logger;
+using ScreenCaptureTimer.ViewModels;
 
 namespace ScreenCaptureTimer
 {
@@ -12,10 +13,9 @@ namespace ScreenCaptureTimer
         {
             Log.Info("Iniciando aplicação...");
 
-            InitializeComponent();
+            this.DataContext = new MainWindowViewModel();
 
-            
-            
+            InitializeComponent();
         }
     }
 }

@@ -40,6 +40,10 @@
     <StartupObject>ScreenCaptureTimer.App</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Library.Core.GUI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Core\GUI\Build\Library.Core.GUI.dll</HintPath>
+    </Reference>
     <Reference Include="Library.Core.Util, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Core\Build\Library.Core.Util.dll</HintPath>
@@ -50,6 +54,7 @@
     <Reference Include="Library.Core.Util.Singleton">
       <HintPath>..\..\Core\Build\Library.Core.Util.Singleton.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationFramework.Aero" />
     <Reference Include="RibbonControlsLibrary, Version=3.5.41019.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -123,10 +128,6 @@
     <ProjectReference Include="..\..\Core\GUI\MVVM\ViewModelHelpers\ViewModelHelpers\ViewModelHelpers.csproj">
       <Project>{6B2B5F9D-1305-48FF-ACBA-56BCF9EB21D6}</Project>
       <Name>ViewModelHelpers</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Core\GUI\WPF\ScreenShotHelper\ScreenShotHelper.csproj">
-      <Project>{DA54AF72-0F7A-43B6-AD8E-D18C6DA7C548}</Project>
-      <Name>ScreenShotHelper</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

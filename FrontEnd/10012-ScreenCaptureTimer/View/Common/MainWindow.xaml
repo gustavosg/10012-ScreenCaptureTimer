@@ -22,17 +22,22 @@
                        Grid.Row="0"
                        VerticalAlignment="Top">
             <ribbon:RibbonTab Header="Arquivo">
-                <ribbon:RibbonMenuItem Header="Tirar Foto" 
-                                     Command="{Binding CapturaTela}"
-                                     />
-                <ribbon:RibbonButton Label="Exibir Log"
-                                     Command="{Binding ExibirLog}" />
-                <ribbon:RibbonButton Label="Fechar Aplicação"
-                                     Command="Close" />
+                <ribbon:RibbonGroup Name="Operações">
+                    <ribbon:RibbonApplicationMenuItem Header="Tirar Foto"
+                                                      Command="{Binding CapturaTela}"
+                                                      Height="30" />
+                    <ribbon:RibbonApplicationMenuItem Header="Exibir Log"
+                                                      Command="{Binding ExibirLog}" />
+
+                    <ribbon:RibbonApplicationMenuItem Header="Fechar Aplicação"
+                                         Command="Close"
+                                         IsEnabled="True" />
+                </ribbon:RibbonGroup>
+
             </ribbon:RibbonTab>
             <ribbon:RibbonTab Header="Configurações">
                 <ribbon:RibbonButton Label="Configurar Aplicação"
-                                     Command="Open" />
+                                     Command="{Binding Configuracoes}" />
             </ribbon:RibbonTab>
             <ribbon:RibbonTab Header="Sobre" />
         </ribbon:Ribbon>

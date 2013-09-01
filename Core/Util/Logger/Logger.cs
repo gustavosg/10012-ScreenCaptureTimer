@@ -50,13 +50,6 @@ namespace Library.Core.Util.Logger
             while (IsFileLocked(file))
                 System.Threading.Thread.Sleep(2000);
 
-            // In case file doesn't exists, creates file AND directory
-            if (!File.Exists(file.FullName))
-            {
-                file.Directory.Create();
-                File.Create(file.FullName);
-            }
-
             if (file.Length > 1024000000)
                 File.Move(LogGetCurrentFile(), LogGetOldFile());
 
@@ -91,7 +84,6 @@ namespace Library.Core.Util.Logger
                 log = level + " | " + date + " | " + logData;
 
                 StreamWriter sw = new StreamWriter(filename);
-                
 
                 sw.WriteLine(content + log);
 
@@ -106,6 +98,26 @@ namespace Library.Core.Util.Logger
         }
 
         /// <summary>
+        /// Check if file already exists, if not then create it.
+        /// </summary>
+        /// <param name="file">File to be created</param>
+        static void CheckFileExistsAndCreate(FileInfo file)
+        {
+            try
+            {
+                if (!File.Exists(file.FullName))
+                {
+                    file.Directory.Create();
+                    File.Create(file.FullName);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        /// <summary>
         /// Check if file is in use
         /// </summary>
         /// <param name="file"></param>
@@ -116,6 +128,7 @@ namespace Library.Core.Util.Logger
 
             try
             {
+                CheckFileExistsAndCreate(file);
                 stream = file.Open(FileMode.Open, FileAccess.ReadWrite, FileShare.None);
             }
             catch (IOException)

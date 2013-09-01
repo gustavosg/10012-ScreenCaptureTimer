@@ -34,7 +34,7 @@ namespace Library.Core.GUI.WPF.ScreenShotHelper
             catch (Exception ex)
             {
                 Log.Error(ex.Message);
-                throw ex;
+                //throw ex;
             }
             finally
             {
