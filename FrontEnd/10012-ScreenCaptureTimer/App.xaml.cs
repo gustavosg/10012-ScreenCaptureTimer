@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Windows;
 using ScreenCaptureTimer.ViewModels;
+using Library.Core.Util.Logger;
 
 namespace ScreenCaptureTimer
 {

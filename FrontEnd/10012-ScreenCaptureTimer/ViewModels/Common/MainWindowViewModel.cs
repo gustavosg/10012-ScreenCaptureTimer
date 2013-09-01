@@ -105,16 +105,12 @@ namespace ScreenCaptureTimer.ViewModels
                 if (timer == 0)
                 {
                     MessageBox.Show("Variável TimerScreenShot não pode ser igual a 0 na configuração do sistema!");
-                    throw new Exception("Variável TimerScreenShot não pode ser igual a 0 na configuração do sistema!");
+                    //throw new Exception("Variável TimerScreenShot não pode ser igual a 0 na configuração do sistema!");
                 }
             }
             catch (Exception exception)
             {
                 Log.Error(exception.ToString());
-            }
-            finally
-            {
-                Application.Current.Shutdown();
             }
         }
 

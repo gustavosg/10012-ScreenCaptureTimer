@@ -13,8 +13,6 @@ namespace ScreenCaptureTimer
         {
             Log.Info("Iniciando aplicação...");
 
-            this.DataContext = new MainWindowViewModel();
-
             InitializeComponent();
         }
     }
