@@ -5,7 +5,11 @@ using System.Text;
 
 namespace Library.Core.GUI.ViewModelHelpers
 {
-    public class ViewModelBasePageEdit : ViewModelBase
+    public class ViewModelBasePageEdit : ViewModelBasePage
     {
+        //public override void OnPropertyChanged(String field){
+
+        //}
+
     }
 }
