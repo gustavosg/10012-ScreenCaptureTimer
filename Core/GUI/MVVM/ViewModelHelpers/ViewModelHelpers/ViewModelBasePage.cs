@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Library.Core.GUI.ViewModelHelpers
 {
-    public class ViewModelBase : NotifyPropertyChanged
+    public class ViewModelBasePage : ViewModelBase
     {
     }
 }

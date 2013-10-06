@@ -37,7 +37,7 @@
             </ribbon:RibbonTab>
             <ribbon:RibbonTab Header="Configurações">
                 <ribbon:RibbonButton Label="Configurar Aplicação"
-                                     Command="{Binding Configuracoes}" />
+                                     Click="Configuracoes_Click"/>
             </ribbon:RibbonTab>
             <ribbon:RibbonTab Header="Sobre" />
         </ribbon:Ribbon>

@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using Library.Core.Util.Logger;
 using ScreenCaptureTimer.ViewModels;
+using ScreenCaptureTimer.View.Configuration;
 
 namespace ScreenCaptureTimer
 {
@@ -14,6 +15,13 @@ namespace ScreenCaptureTimer
             Log.Info("Iniciando aplicação...");
 
             InitializeComponent();
+
+            
+        }
+
+        private void Configuracoes_Click(object sender, RoutedEventArgs e)
+        {
+            FrameContainer.Navigate(new ConfigurationView());
         }
     }
 }

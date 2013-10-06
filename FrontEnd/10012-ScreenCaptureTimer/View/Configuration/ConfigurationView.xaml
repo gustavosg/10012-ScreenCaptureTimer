@@ -30,9 +30,9 @@
                VerticalAlignment="Top" Grid.Row="0"/>
 
 
-        <TextBlock Text=""
+        <TextBox Text="{Binding ConfigurationSavePath}"
                    Margin="0,0,0,0"
-                   Width="Auto"
+                   
                    Height="22"
                    Grid.Row="0"
                    Grid.Column="1" />
@@ -45,7 +45,8 @@
                 Width="100"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Bottom"
-                Margin="130,0,0,5" />
+                Margin="130,0,0,5" 
+                Command="{Binding Gravar}"/>
         <Button Content="Cancelar"
                 Width="100"
                 Grid.Row="3"
@@ -53,6 +54,7 @@
                 Grid.ColumnSpan="2"
                 VerticalAlignment="Bottom"
                 HorizontalAlignment="Left"
-                Margin="240,0,0,5" />
+                Margin="240,0,0,5"
+                Command="{Binding Close}"/>
     </Grid>
 </Page>

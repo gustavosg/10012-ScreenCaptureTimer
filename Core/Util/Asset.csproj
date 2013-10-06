@@ -47,12 +47,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BusinessStrings.resx</DependentUpon>
     </Compile>
+    <Compile Include="LibraryStrings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LibraryStrings.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="BusinessStrings.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>BusinessStrings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LibraryStrings.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>LibraryStrings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

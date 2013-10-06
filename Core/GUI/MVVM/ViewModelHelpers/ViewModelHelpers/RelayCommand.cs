@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Diagnostics;
 using System.Windows.Input;
 
@@ -18,8 +15,6 @@ namespace Library.Core.GUI.ViewModelHelpers
 
         #endregion
     
-        // Fields 
-        
         #region Constructors
 
         public RelayCommand(Action<object> execute) : this(execute, null) { }
@@ -33,8 +28,6 @@ namespace Library.Core.GUI.ViewModelHelpers
        
         #endregion
        
-        // Constructors 
-        
         #region ICommand Members
 
         [DebuggerStepThrough]
@@ -55,6 +48,5 @@ namespace Library.Core.GUI.ViewModelHelpers
         }
        
         #endregion
-        // ICommand Members 
     }
 }

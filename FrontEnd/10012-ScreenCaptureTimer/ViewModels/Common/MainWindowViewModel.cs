@@ -10,15 +10,12 @@
 // --------------------------------------------------------------------------------
 
 using System;
-
-using Library.Core.GUI.WPF.ScreenShotHelper;
-using Library.Core.GUI.ViewModelHelpers;
-
 using System.Configuration;
 using System.Windows;
+using Library.Core.GUI.ViewModelHelpers;
+using Library.Core.GUI.WPF.ScreenShotHelper;
 using Library.Core.Util;
 using Library.Core.Util.Logger;
-using System.Diagnostics;
 
 namespace ScreenCaptureTimer.ViewModels
 {
@@ -57,12 +54,12 @@ namespace ScreenCaptureTimer.ViewModels
         }
 
         private RelayCommand abrirConfiguracoes;
-        public RelayCommand AbrirConfiguracoes
+        public RelayCommand Configuracoes
         {
             get
             {
                 if (abrirConfiguracoes == null)
-                    abrirConfiguracoes = new RelayCommand(param => DoAbrirConfiguracoes());
+                    abrirConfiguracoes = new RelayCommand(param => DoConfiguracoes());
                 return abrirConfiguracoes;
             }
         }
@@ -87,8 +84,9 @@ namespace ScreenCaptureTimer.ViewModels
             get { return true; }
         }
 
-        public void DoAbrirConfiguracoes()
+        public void DoConfiguracoes()
         {
+            
 
         }
 
@@ -97,21 +95,22 @@ namespace ScreenCaptureTimer.ViewModels
         /// </summary>
         private void ConfigureScreenShot()
         {
-            timer = Convert.ToInt16(System.Configuration.ConfigurationManager.AppSettings["TimerScreenShot"]);
-            //ConfigurationManager.AppSettings["TimerScreenShot"].ToString());
+            timer = Convert.ToInt16(ConfigurationManager.AppSettings["TimerScreenShot"]);
 
-            try
-            {
-                if (timer == 0)
+            if (timer != null)
+
+                try
                 {
-                    MessageBox.Show("Variável TimerScreenShot não pode ser igual a 0 na configuração do sistema!");
-                    //throw new Exception("Variável TimerScreenShot não pode ser igual a 0 na configuração do sistema!");
+                    if (timer == 0)
+                    {
+                        MessageBox.Show("Variável TimerScreenShot não pode ser igual a 0 na configuração do sistema!");
+                        //throw new Exception("Variável TimerScreenShot não pode ser igual a 0 na configuração do sistema!");
+                    }
                 }
-            }
-            catch (Exception exception)
-            {
-                Log.Error(exception.ToString());
-            }
+                catch (Exception exception)
+                {
+                    Log.Error(exception.ToString());
+                }
         }
 
         /// <summary>
