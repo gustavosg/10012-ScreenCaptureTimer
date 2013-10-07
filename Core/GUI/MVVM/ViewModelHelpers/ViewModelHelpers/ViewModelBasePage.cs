@@ -7,5 +7,9 @@ namespace Library.Core.GUI.ViewModelHelpers
 {
     public class ViewModelBasePage : ViewModelBase
     {
+        public ViewModelBasePage()
+        {
+
+        }
     }
 }

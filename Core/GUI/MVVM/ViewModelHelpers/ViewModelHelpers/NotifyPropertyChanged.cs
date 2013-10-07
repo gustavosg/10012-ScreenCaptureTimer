@@ -9,13 +9,18 @@ namespace Library.Core.GUI.ViewModelHelpers
     public class NotifyPropertyChanged : INotifyPropertyChanged
     {
 
+        public NotifyPropertyChanged()
+        {
+
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected void OnPropertyChanged(String propertyName)
+        protected virtual void OnPropertyChanged(String propertyName)
         {
             PropertyChangedEventHandler handler = this.PropertyChanged;
 
-            if (handler == null)
+            if (handler != null)
             {
                 var e = new PropertyChangedEventArgs(propertyName);
                 handler(this, e);

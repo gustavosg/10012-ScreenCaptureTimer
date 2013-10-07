@@ -19,7 +19,7 @@ namespace ScreenCaptureTimer.ViewModel.Configuration
 
         public ConfigurationViewModel()
         {
-            //InicializaTela();
+            InicializaTela();
         }
 
         #endregion

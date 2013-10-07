@@ -7,6 +7,11 @@ namespace Library.Core.GUI.ViewModelHelpers
 {
     public class ViewModelBasePageEdit : ViewModelBasePage
     {
+
+        public ViewModelBasePageEdit()
+        {
+
+        }
         //public override void OnPropertyChanged(String field){
 
         //}
